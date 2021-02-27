@@ -1,0 +1,11 @@
+
+spring:
+  datasource:
+    name: restapi
+    password: Abhishek@123
+    url: "jdbc:mysql://localhost1:3306/restapi"
+    username: root
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create

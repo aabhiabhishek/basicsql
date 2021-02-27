@@ -1,30 +1,24 @@
-package com.example.demoSql.Controllers;
+package com.example.demoSql.business;
 
-
-import com.example.demoSql.Entity.instance;
-import com.example.demoSql.Repositories.DescribeRepo;
-import com.example.demoSql.apis.Describe;
+import com.example.demoSql.entity.Instance;
+import com.example.demoSql.repositories.DescribeRepo;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.ec2.Ec2Client;
 import software.amazon.awssdk.services.ec2.model.*;
 
 import java.util.List;
 
-@RestController
-public class DescribeController implements Describe {
-
+@Service
+@Slf4j
+public class CrudHandler {
     @Autowired
     DescribeRepo describerepo;
 
-    @PostMapping("/describe")
-    public  void describe(){
-
+    public void Describe(){
+        log.info("Save in database");
         Ec2Client ec2 = Ec2Client.builder().build();
-        boolean done = false;
         String nextToken = null;
 
         try {
@@ -33,9 +27,9 @@ public class DescribeController implements Describe {
                 DescribeInstancesResponse response = ec2.describeInstances(request);
 
                 for (Reservation reservation : response.reservations()) {
-                    for (Instance instanc : reservation.instances()) {
+                    for (software.amazon.awssdk.services.ec2.model.Instance instanc : reservation.instances()) {
 
-                        instance ins=new instance();
+                        Instance ins=new Instance();
                         ins.setInstanceid(instanc.instanceId());
                         ins.setPrivateip(instanc.privateIpAddress());
                         ins.setPublicip(instanc.publicIpAddress());
@@ -55,15 +49,9 @@ public class DescribeController implements Describe {
         }
     }
 
-    @GetMapping("/get")
-    public List<instance> get()
+
+    public List<Instance> get()
     {
-        return describerepo.findAll();
-    }
-
-
-    @Override
-    public Object hello(String value) {
-        return null;
+            return describerepo.findAll();
     }
 }
