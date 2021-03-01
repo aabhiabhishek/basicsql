@@ -1,7 +1,7 @@
-package com.example.demoSql.business;
+package demoSql.example.business;
 
-import com.example.demoSql.entity.Instance;
-import com.example.demoSql.repositories.DescribeRepo;
+import demoSql.example.entity.Instance;
+import demoSql.example.repositories.DescribeRepo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,12 +29,10 @@ public class CrudHandler {
                 for (Reservation reservation : response.reservations()) {
                     for (software.amazon.awssdk.services.ec2.model.Instance instanc : reservation.instances()) {
 
-                        Instance ins=new Instance();
-                        ins.setInstanceid(instanc.instanceId());
-                        ins.setPrivateip(instanc.privateIpAddress());
-                        ins.setPublicip(instanc.publicIpAddress());
-                        ins.setType(instanc.instanceType());
-
+                        Instance ins=new Instance(instanc.instanceId(),
+                                instanc.privateIpAddress(),
+                                instanc.publicIpAddress(),
+                                instanc.instanceType());
 
                         describerepo.save(ins);
 
@@ -52,6 +50,7 @@ public class CrudHandler {
 
     public List<Instance> get()
     {
+        log.info("Get from database");
             return describerepo.findAll();
     }
 }

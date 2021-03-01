@@ -1,7 +1,6 @@
-package com.example.demoSql.business;
+package demoSql.example.business;
 
-import static com.example.demoSql.constants.Constants.*;
-
+import demoSql.example.constants.Constants;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,18 +14,18 @@ public class OperationHandler {
     {
         switch (operation)
         {
-            case READ:
+            case Constants.READ:
                 return crudhandler.get();
 
-            case UPDATE:
+            case Constants.UPDATE:
 
             break;
 
-            case DELETE:
+            case Constants.DELETE:
 
             break;
 
-            case SAVE:
+            case Constants.SAVE:
                 crudhandler.Describe();
             break;
 

@@ -1,4 +1,4 @@
-package com.example.demoSql.apis;
+package demoSql.example.apis;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

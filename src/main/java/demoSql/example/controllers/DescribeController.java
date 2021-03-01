@@ -1,10 +1,9 @@
-package com.example.demoSql.controllers;
+package demoSql.example.controllers;
 
-import static com.example.demoSql.constants.Constants.*;
-
-import com.example.demoSql.entity.Instance;
-import com.example.demoSql.apis.Describe;
-import com.example.demoSql.business.OperationHandler;
+import demoSql.example.apis.Describe;
+import demoSql.example.business.OperationHandler;
+import demoSql.example.constants.Constants;
+import demoSql.example.entity.Instance;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,13 +19,13 @@ public class DescribeController implements Describe {
 
     @PostMapping("/describe")
     public  void describe(){
-        operationhandler.executeOperation(SAVE);
+        operationhandler.executeOperation(Constants.SAVE);
     }
 
     @GetMapping("/get")
     public List<Instance> get()
     {
-         return (List<Instance>) operationhandler.executeOperation(READ);
+         return (List<Instance>) operationhandler.executeOperation(Constants.READ);
     }
 
 

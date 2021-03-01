@@ -1,4 +1,4 @@
-package com.example.demoSql.constants;
+package demoSql.example.constants;
 
 public class Constants {
 

@@ -1,4 +1,4 @@
-package com.example.demoSql;
+package demoSql.example;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.SpringApplication;
@@ -23,7 +23,7 @@ public class SqlDemoApplication {
 	@Bean
 	public Docket productApi() {
 		return new Docket(DocumentationType.SWAGGER_2).select()
-				.apis(RequestHandlerSelectors.basePackage("com.example.demoSql.Controllers")).build();
+				.apis(RequestHandlerSelectors.basePackage("demoSql.example.controllers")).build();
 	}
 
 }

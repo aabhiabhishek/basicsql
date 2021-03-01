@@ -1,4 +1,4 @@
-package com.example.demoSql.entity;
+package demoSql.example.entity;
 
 
 import lombok.*;
@@ -14,9 +14,8 @@ import javax.persistence.Id;
 @Getter
 public class Instance {
     @Id
-    private String instanceid;
-    private String publicip;
-    private String privateip;
+    private String instanceId;
+    private String publicIp;
+    private String privateIp;
     private InstanceType type;
-
 }
