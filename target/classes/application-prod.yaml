@@ -1,0 +1,11 @@
+
+spring:
+  datasource:
+    name: aws
+    password: aws@123
+    url: "jdbc:mysql://localhost:3306/restapi"
+    username: aws
+  jpa:
+    generate-ddl: true
+    hibernate:
+      ddl-auto: create

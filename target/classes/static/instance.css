@@ -1,0 +1,87 @@
+instance{
+  
+  background:#FFFFFF;
+  display: grid;
+  grid-template-areas: 
+    "div1"
+    "div2";
+  
+  grid-template-rows: 20% 80% ;  
+  grid-template-columns: 1fr;
+  
+  height: 100%;
+  box-sizing: border-box;
+  }  
+
+  div1{
+  padding: 1.2em;
+  background:#FAFAFA;
+  }
+  div2{
+ 
+  }
+
+#instance_div1 {
+  grid-area: div1;
+  }
+
+#instance_div2{ 
+  grid-area: div2;      
+  }
+
+/*DIV2 IS A LOWER PART OF INSTANCE SUMMARY AND WE CREATED GRID OF DIV2 BELOW*/
+
+div2{
+
+  background:lightgrey;
+  display: grid;
+  grid-template-areas: 
+    "section1 section2 section3";
+  
+  grid-template-rows: 100% ;  
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-column-gap: 1px;
+  height: 100%;
+  box-sizing: border-box;
+  }  
+
+
+#div2_section1 {
+  grid-area: section1;
+  }
+
+#div2_section2{ 
+  grid-area: section2;      
+  }
+#div2_section3 {
+    grid-area: section3;
+    }
+
+
+/*NEW GRID FOR DIV2_SECTION1 CREATED BELLOW*/
+
+section1,section2,section3{
+
+  background:#FFFFFF;
+  display: grid;
+  grid-template-areas: 
+    "box1"
+    "box2"
+    "box3"
+    "box4";
+  
+  grid-template-rows:25% 25% 25% 25% ;  
+  grid-template-columns: 1fr;
+  grid-row-gap: 1px;
+  height: 100%;
+  box-sizing: border-box;
+  }  
+ box1,box2,box3,box4{
+  padding: 1.2em;
+  background: lightcyan;
+  }
+
+#div2_box1{grid-area: box1;}
+#div2_box2{grid-area: box2;}
+#div2_box3{grid-area: box3;}
+#div2_box4{grid-area: box4;}
