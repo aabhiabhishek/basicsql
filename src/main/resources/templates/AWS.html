@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" charset="UTF-8">
+</head>
+<link rel="stylesheet" href="article.css"><link rel="stylesheet" href="sidebar.css"><link rel="stylesheet" href="Body.css">
+
+
+<body>
+   <navbar id="pagenavbar">                                               <!-- Navigation bar tag -->
+     <img src="logo_aws.svg" alt="aws logo" width="auto" height="auto" style="display: block;margin-left: 40px;margin-top: 11px;">
+
+   </navbar>                              
+
+   <article id="mainArticle">                                            <!-- Article(frame wwhich contains instance summary and monitoring screen) tag -->
+      <instance id="article_instance">
+          <div1 id="instance_div1"><h1>Instance summary for <p th:text="${instance[0].instanceId}"/></h1></div1>
+          <div2 id="instance_div2">
+            <section1 id="div2_section1">
+                <box1 id="div2_box1">Instance ID <p  th:text="${instance[0].instanceId}"/></box1>
+                <box2 id="div2_box2">Instance state</box2>
+                <box3 id="div2_box3">Instance type <p th:text="${instance[0].type}"/></box3>
+                <box4 id="div2_box4">AWS Compute Optimizer finding</box4>
+            </section1>
+            <section2 id="div2_section2">
+                <box1 id="div2_box1">Public IPv4 address <p th:text="${instance[0].publicIp}" /></box1>
+                <box2 id="div2_box2">Public IPv4 DNS </box2>
+                <box3 id="div2_box3">Elastic IP addresses</box3>
+                <box4 id="div2_box4">IAM Role</box4>
+            </section2>
+            <section3 id="div2_section3">
+                <box1 id="div2_box1">Private IPv4 addresses <p th:text="${instance[0].privateIp}" /></box1>
+                <box2 id="div2_box2">Private IPv4 DNS</box2>
+                <box3 id="div2_box3">VPC ID</box3>
+                <box4 id="div2_box4">Subnet ID</box4>
+            </section3>
+          </div2>
+      </instance>
+    <monitoring id="article_monitoring">monitoring</monitoring>
+  </article>
+
+  <sidebar id="mainsidebar">                                            <!-- Sidebar(sidemenu) tag -->
+         <div class="sidemenu">       
+                  <ul>
+                          <li><a class="active" href="#ec2">EC2 Dashboard</a></li>
+                          <li><a href="#ev">Events</a></li>
+                          <li><a href="#tg">Tags</a></li>
+                          <li><a href="#li">Limits</a></li>
+                          <li><a href="#in">Instances</a></li>
+                          <li><a href="#im">Images</a></li>
+                          <li><a href="#ebs">Elastic Block Store</a></li>
+                          <li><a href="#ns">Network & Security</a></li>
+                          <li><a href="#lb">Load Balancing</a></li>
+                          <li><a href="#as">Auto Scaling</a></li>
+                          
+                  </ul>
+              </div>
+  </sidebar>
+
+</body>
+</html>
+
+

@@ -7,7 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import software.amazon.awssdk.services.ec2.Ec2Client;
 import software.amazon.awssdk.services.ec2.model.*;
-
 import java.util.List;
 
 @Service
@@ -32,7 +31,8 @@ public class CrudHandler {
                         Instance ins=new Instance(instanc.instanceId(),
                                 instanc.privateIpAddress(),
                                 instanc.publicIpAddress(),
-                                instanc.instanceType());
+                                instanc.instanceType()
+                        );
 
                         describerepo.save(ins);
 

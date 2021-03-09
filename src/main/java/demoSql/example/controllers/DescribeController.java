@@ -1,36 +1,48 @@
 package demoSql.example.controllers;
 
-import demoSql.example.apis.Describe;
 import demoSql.example.business.OperationHandler;
 import demoSql.example.constants.Constants;
-import demoSql.example.entity.Instance;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 
-import java.util.List;
-
-@RestController
-public class DescribeController implements Describe {
+@Controller
+public class DescribeController {
 
     @Autowired
     OperationHandler operationhandler;
 
-    @PostMapping("/describe")
-    public  void describe(){
+    @PostMapping("/")
+    public  String describe(){
         operationhandler.executeOperation(Constants.SAVE);
+        return "greeting";
     }
 
     @GetMapping("/get")
-    public List<Instance> get()
+    public ModelAndView get()
     {
-         return (List<Instance>) operationhandler.executeOperation(Constants.READ);
+        ModelAndView mav = new ModelAndView("AWS");
+        Object obj = operationhandler.executeOperation(Constants.READ);
+        mav.addObject("instance",obj);
+        return mav;
     }
 
 
-    @Override
-    public Object hello(String value) {
-        return null;
+    @GetMapping("/hello")
+    public ModelAndView greeting(@RequestParam(name="name", required=false, defaultValue="World") String name) {
+        ModelAndView mav = new ModelAndView("greeting");
+        mav.addObject("name", name);
+        return mav;
     }
+
+
+    /*
+    For React App
+     */
+
+
+
 }
